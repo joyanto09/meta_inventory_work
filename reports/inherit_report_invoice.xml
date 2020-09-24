@@ -1,0 +1,56 @@
+<!-- Inherit quotation report (from module sale) -->
+<odoo>
+    <data>
+        <template id="inherit_salees_report_demo" inherit_id="sale_stock.sale_stock_report_invoice_document">
+            <xpath expr="//t[@t-if='lot_values']" position="replace">
+<!--                <t t-if="lot_values">-->
+<!--                    <br/>-->
+<!--                    <table groups="sale_stock.group_lot_on_invoice" class="table table-sm" style="width: 100%;" name="invoice_snln_table">-->
+<!--                        <thead>-->
+<!--                            <tr>-->
+<!--                                <th><span>Product</span></th>-->
+<!--                                <th class="text-right"><span>Quantity</span></th>-->
+<!--                                <th class="text-right"><span>SN/LN</span></th>-->
+<!--                                <th class="text-right"><span>Chassis Number</span></th>-->
+<!--                                <th class="text-right"><span>Engine Number</span></th>-->
+<!--                                <th class="text-right"><span>Battery Number</span></th>-->
+<!--                            </tr>-->
+<!--                        </thead>-->
+<!--                        <tbody>-->
+<!--                            <t t-foreach="lot_values" t-as="snln_line">-->
+<!--                                <tr>-->
+<!--                                    <td><t t-esc="snln_line['product_name']"/></td>-->
+<!--                                    <td class="text-right">-->
+<!--                                        <t t-esc="snln_line['quantity']"/>-->
+<!--                                        <t t-esc="snln_line['uom_name']" groups="uom.group_uom"/>-->
+<!--                                    </td>-->
+<!--                                    <td class="text-right"><t t-esc="snln_line['lot_name']"/></td>-->
+<!--                                    <td class="text-right"><t t-esc="snln_line['chassis_number']"/></td>-->
+<!--                                </tr>-->
+<!--                            </t>-->
+<!--                        </tbody>-->
+<!--                    </table>-->
+<!--                </t>-->
+<!--            </xpath>-->
+
+<!--            <xpath expr="//td[@t-elif='has_serial_number']" position="after">-->
+<!--                <td t-if="has_serial_number and move_line.chassis_number" groups="stock.group_lot_on_delivery_slip">-->
+<!--                    <span t-field="move_line.chassis_number"/>-->
+<!--                </td>-->
+
+<!--                <td t-if="has_serial_number and move_line.engine_number" groups="stock.group_lot_on_delivery_slip">-->
+<!--                    <span t-field="move_line.engine_number"/>-->
+<!--                </td>-->
+
+<!--                <td t-if="has_serial_number and move_line.battery_number" groups="stock.group_lot_on_delivery_slip">-->
+<!--                    <span t-field="move_line.battery_number"/>-->
+<!--                </td>-->
+<!--            </xpath>-->
+
+        </template>
+    </data>
+</odoo>
+
+<!--<xpath expr="/t/t/div/div[2]/t[2]/table/thead/tr/th[3]" position="after">-->
+<!--                <th class="text-right"><span>Chassis Number</span></th>-->
+<!--            </xpath>-->

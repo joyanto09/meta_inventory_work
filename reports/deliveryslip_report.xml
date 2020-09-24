@@ -1,0 +1,82 @@
+<!-- Inherit quotation report (from module sale) -->
+<odoo>
+    <data>
+        <template id="report_quotation_inherit_demo" inherit_id="stock.report_delivery_document">
+
+            <xpath expr="//t[@t-set='has_serial_number']" position="after">
+                <t t-set="display_chassis" t-value="any([j.chassis_number for j in o.move_line_ids])"/>
+                <t t-set="display_engine" t-value="any([k.engine_number for k in o.move_line_ids])"/>
+                <t t-set="display_battery" t-value="any([l.battery_number for l in o.move_line_ids])"/>
+            </xpath>
+
+            <xpath expr="//th[@name='lot_serial']" position="after">
+                <th t-if="display_chassis" groups="stock.group_lot_on_delivery_slip">
+                    Chassis Number
+                </th>
+                <th t-if="display_engine" groups="stock.group_lot_on_delivery_slip">
+                    Motor Number
+                </th>
+                <th t-if="display_battery" groups="stock.group_lot_on_delivery_slip">
+                    Battery Number
+                </th>
+            </xpath>
+
+            <xpath expr="//td[@t-elif='has_serial_number']" position="after">
+                <td t-if="has_serial_number and move_line.chassis_number" groups="stock.group_lot_on_delivery_slip">
+                    <span t-field="move_line.chassis_number"/>
+                </td>
+
+                <td t-if="has_serial_number and move_line.engine_number" groups="stock.group_lot_on_delivery_slip">
+                    <span t-field="move_line.engine_number"/>
+                </td>
+
+                <td t-if="has_serial_number and move_line.battery_number" groups="stock.group_lot_on_delivery_slip">
+                    <span t-field="move_line.battery_number"/>
+                </td>
+            </xpath>
+
+        </template>
+    </data>
+</odoo>
+
+
+<!--<t t-set="has_chassis_number_active" t-value="o.move_line_ids"/>-->
+<!--                <t t-set="has_engine_number_active" t-value="o.move_line_ids"/>-->
+<!--                <t t-set="has_battery_number_active" t-value="o.move_line_ids"/>-->
+
+<!-- <xpath expr="//th[@name='lot_serial']" position="after">-->
+<!--                <th t-if="has_serial_number" groups="stock.group_lot_on_delivery_slip">-->
+<!--                    Chassis Number-->
+<!--                </th>-->
+<!--                <th t-if="has_serial_number" groups="stock.group_lot_on_delivery_slip">-->
+<!--                    Motor Number-->
+<!--                </th>-->
+<!--                <th t-if="display_battery" groups="stock.group_lot_on_delivery_slip">-->
+<!--                    Battery Number-->
+<!--                </th>-->
+<!--            </xpath>-->
+
+
+
+<!--<xpath expr="//td[@t-elif='has_serial_number']" position="after">-->
+<!--                <td t-if="has_serial_number and move_line.chassis_number" groups="stock.group_lot_on_delivery_slip">-->
+<!--                    <span t-field="move_line.chassis_number"/>-->
+<!--                </td>-->
+<!--                <td t-elif="has_serial_number" groups="stock.group_lot_on_delivery_slip">-->
+<!--                    <span t-field="move_line.chassis_number"/>-->
+<!--                </td>-->
+
+<!--                <td t-if="has_serial_number and move_line.engine_number" groups="stock.group_lot_on_delivery_slip">-->
+<!--                    <span t-field="move_line.engine_number"/>-->
+<!--                </td>-->
+<!--                <td t-elif="has_serial_number" groups="stock.group_lot_on_delivery_slip">-->
+<!--                    <span t-field="move_line.engine_number"/>-->
+<!--                </td>-->
+
+<!--                <td t-if="has_serial_number and move_line.battery_number" groups="stock.group_lot_on_delivery_slip">-->
+<!--                    <span t-field="move_line.battery_number"/>-->
+<!--                </td>-->
+<!--                <td t-elif="has_serial_number" groups="stock.group_lot_on_delivery_slip">-->
+<!--                    <span t-field="move_line.battery_number"/>-->
+<!--                </td>-->
+<!--            </xpath>-->
